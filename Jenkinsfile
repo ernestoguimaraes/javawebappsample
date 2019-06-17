@@ -1,3 +1,4 @@
+
 import groovy.json.JsonSlurper
 
 def getFtpPublishProfile(def publishProfilesJson) {
@@ -7,11 +8,12 @@ def getFtpPublishProfile(def publishProfilesJson) {
       return [url: p.publishUrl, username: p.userName, password: p.userPWD]
 }
 
-node {
-  tools {
+tools {
     maven 'M3'
   }  
-  stages{ 
+
+node { 
+
     stage('init') {
       checkout scm
     }  
@@ -30,7 +32,7 @@ node {
         '''
       }
     }
-  }
+  
     // get publish settings
     def pubProfilesJson = sh script: "az webapp deployment list-publishing-profiles -g $resourceGroup -n $webAppName", returnStdout: true
     def ftpProfile = getFtpPublishProfile pubProfilesJson
