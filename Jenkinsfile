@@ -8,6 +8,9 @@ def getFtpPublishProfile(def publishProfilesJson) {
 }
 
 node {
+  tools {
+    maven 'M3'
+  }  
   stage('init') {
     checkout scm
   }
