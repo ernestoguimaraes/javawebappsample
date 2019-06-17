@@ -14,13 +14,8 @@ node {
     stage('init') {
       checkout scm
     }  
-    stage('build') {
-     
-      def mvn_version = 'M3'
-          withEnv( ["PATH+MAVEN=${tool mvn_version}/bin"] ) {
-          //sh "mvn clean package"
-          }
-      
+    stage('build') {           
+          sh "mvn clean package"      
     }
   
     stage('deploy') {
