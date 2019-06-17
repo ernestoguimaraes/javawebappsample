@@ -17,8 +17,8 @@ node {
   }
   
   stage('deploy') {
-    def resourceGroup = '<myResourceGroup>' 
-    def webAppName = '<app_name>'
+      def resourceGroup = 'StudyJenkins' 
+    def webAppName = 'GaiaAppJenkins'
     // login Azure
     withCredentials([azureServicePrincipal('<mySrvPrincipal>')]) {
       sh '''
